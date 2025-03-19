@@ -38,8 +38,8 @@ const showDialog = ref<boolean>(false);
     </v-card-actions>
   </v-card>
   <v-dialog max-width="500" persistent v-model="showDialog">
-    <v-card title="Dialog">
-      <v-card-text>
+    <v-card>
+      <v-card-text class="mt-7">
         Are you sure you want to delete this Item?
       </v-card-text>
       <v-card-actions>
