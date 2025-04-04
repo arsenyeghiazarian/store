@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import {
-  addToCart,
-  removeFromCart,
-  updateCartItem,
-  getCartItemById
-} from '@/services/cart.ts'
 import type { IProduct } from "@/interfaces/product";
+import { useCartStore } from "@/store/cart.ts";
 
 const props = defineProps({
   item: {
     type: Object as () => IProduct,
     required: true
   }
-})
+});
+
+const {
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  getItem
+} = useCartStore();
 
 // Manage the current quantity
 const quantity = ref(0);
@@ -26,15 +28,15 @@ function increaseQuantity() {
 function decreaseQuantity() {
   // If quantity goes to 0, reset the selector to show "Buy" button
   if (quantity.value > 1) {
-    updateCartItem(props.item.id, --quantity.value)
+    updateQuantity(props.item.id, --quantity.value)
   } else {
     quantity.value = 0;
-    removeFromCart(props.item)
+    removeFromCart(props.item?.id)
   }
 }
 
 onMounted(() => {
-  const cartItem = getCartItemById(props.item?.id) || null;
+  const cartItem = getItem(props.item?.id) || null;
   if (cartItem) {
     quantity.value = cartItem.quantity!;
   }
@@ -52,7 +54,7 @@ onMounted(() => {
       <span class="mx-2">{{ quantity }}</span>
       <v-btn
         icon="mdi-plus"
-        @click="updateCartItem(item.id, ++quantity)"
+        @click="updateQuantity(item.id, ++quantity)"
         size="small"
         density="compact">
       </v-btn>

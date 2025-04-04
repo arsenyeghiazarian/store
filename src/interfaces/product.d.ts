@@ -55,7 +55,7 @@ export interface IProduct {
   isGiftCard: symbol;
   discountsAllowed: boolean;
   nameYourPriceEnabled: symbol;
-  quantity?: number
+  quantity: number
 }
 
 interface IGalleryImages {

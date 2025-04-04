@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import {loadCart} from '@/services/cart.ts'
-import { onMounted } from "vue";
 import CartIcon from "@/components/CartIcon.vue";
 
-onMounted(() => {
-  loadCart()
-})
 </script>
 <template>
   <v-app>

@@ -3,9 +3,9 @@ import BuyBtn from "@/components/BuyBtn.vue";
 import type { IProduct } from "@/interfaces/product";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { removeFromCart } from "@/services/cart.ts"
+import { useCartStore } from "@/store/cart.ts";
 
-defineProps({
+const props = defineProps({
   product: {
     type: Object as () => IProduct,
     required: true
@@ -15,14 +15,19 @@ defineProps({
     default: false
   }
 });
-
+const {removeFromCart} = useCartStore();
 const router = useRouter();
 const showDialog = ref<boolean>(false);
+
+const handleItemRemove = () => {
+  removeFromCart(props.product.id)
+  showDialog.value = false;
+};
 </script>
 <template>
   <v-card @click="router.push(`/product/${product.id}`)" hover>
     <v-img :src="product.imageUrl">
-      <v-card-title>{{product.name}}</v-card-title>
+      <v-card-title>{{ product.name }}</v-card-title>
     </v-img>
     <v-card-actions>
       <p class="font-weight-medium">{{ product.defaultDisplayedPriceFormatted }}</p>
@@ -48,7 +53,7 @@ const showDialog = ref<boolean>(false);
           text="Yes"
           variant="flat"
           color="green"
-          @click="removeFromCart(product)"
+          @click="handleItemRemove"
         ></v-btn>
         <v-btn
           color="red"

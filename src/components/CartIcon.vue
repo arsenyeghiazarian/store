@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import cart from '@/services/cart.ts'
+import { useCartStore } from "@/store/cart.ts";
 
 const router = useRouter()
-const cartCount = computed(() => cart.items.length)
+const cart = useCartStore();
 
 function goToCart() {
   router.push('/cart')
@@ -13,7 +12,7 @@ function goToCart() {
 
 <template>
   <v-btn icon @click="goToCart" class="position-relative">
-    <v-badge :content="cartCount" size="small">
+    <v-badge :content="cart.totalItems" size="small">
       <v-icon icon="mdi-cart-outline" size="large"></v-icon>
     </v-badge>
   </v-btn>

@@ -1,26 +1,21 @@
-<script lang="ts">
-export default {
-  name: 'ProgressCircular'
-}
-</script>
 <script setup lang="ts">
 defineProps({
   size: {
     type: String,
-    default:"66"
+    default: "66"
   },
   width: {
     type: String,
-    default:"7"
+    default: "7"
   },
 })
 </script>
 <template>
   <div class="progress-bar">
     <v-progress-circular
-        indeterminate
-        :size
-        :width
+      indeterminate
+      :size
+      :width
     ></v-progress-circular>
   </div>
 </template>

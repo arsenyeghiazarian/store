@@ -34,7 +34,7 @@ onMounted(async () => {
           <h1 class="font-weight-medium mb-2">{{ product.name }}</h1>
           <p v-html="`${product.description}`" class="mb-1"></p>
           <p class="mb-2">
-            <strong>Price:</strong> {{ product.defaultDisplayedPriceFormatted }}
+            <strong>Price:</strong> {{ product.price }}
           </p>
           <buy-btn :item="product"></buy-btn>
         </v-col>
