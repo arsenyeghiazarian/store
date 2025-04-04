@@ -2,14 +2,14 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
-import ProductsService from "@/services/products.service.ts";
+import ProductsService from "@/services/products.service";
 
 import type { AxiosResponse } from "axios";
 import type { IProduct } from "@/interfaces/product";
 
 import ProductCard from "@/components/ProductCard.vue";
 import ProgressCircular from "@/components/ProgressCircular.vue";
-import CategoryService from "@/services/category.service.ts";
+import CategoryService from "@/services/category.service";
 import type { ICategory } from "@/interfaces/category";
 
 const isLoading = ref<boolean>(false);

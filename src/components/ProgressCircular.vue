@@ -1,21 +1,9 @@
-<script setup lang="ts">
-defineProps({
-  size: {
-    type: String,
-    default: "66"
-  },
-  width: {
-    type: String,
-    default: "7"
-  },
-})
-</script>
 <template>
   <div class="progress-bar">
     <v-progress-circular
       indeterminate
-      :size
-      :width
+      size="66"
+      width="7"
     ></v-progress-circular>
   </div>
 </template>

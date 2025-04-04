@@ -9,8 +9,8 @@ export interface ICategory {
   productCount: number,
   description: string,
   descriptionTranslated: object,
-  enabled: true,
-  isSampleCategory: false,
+  enabled: boolean,
+  isSampleCategory: boolean,
   seoTitle: string,
   seoDescription: string,
   alt: object

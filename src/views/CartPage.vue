@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 import ProductCard from "@/components/ProductCard.vue";
-import { useCartStore } from "@/store/cart.ts";
+import { useCartStore } from "@/store/cart";
 
 const cart = useCartStore();
 const isSubmitted = ref<boolean>(false);

@@ -3,18 +3,17 @@ import BuyBtn from "@/components/BuyBtn.vue";
 import type { IProduct } from "@/interfaces/product";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { useCartStore } from "@/store/cart.ts";
+import { useCartStore } from "@/store/cart";
 
-const props = defineProps({
-  product: {
-    type: Object as () => IProduct,
-    required: true
-  },
-  hasDeleteBtn: {
-    type: Boolean,
-    default: false
-  }
+interface Props {
+  product: IProduct
+  hasDeleteBtn?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  hasDeleteBtn: false
 });
+
 const {removeFromCart} = useCartStore();
 const router = useRouter();
 const showDialog = ref<boolean>(false);

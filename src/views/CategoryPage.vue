@@ -2,8 +2,8 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-import CategoryService from "@/services/category.service.ts";
-import ProductsService from "@/services/products.service.ts";
+import CategoryService from "@/services/category.service";
+import ProductsService from "@/services/products.service";
 
 import type { AxiosResponse } from "axios";
 import type { ICategories, IProduct } from "@/interfaces/product";
@@ -12,10 +12,10 @@ import type { ICategory } from "@/interfaces/category";
 import ProductCard from "@/components/ProductCard.vue";
 import ProgressCircular from "@/components/ProgressCircular.vue";
 
-const route = useRoute()
-const category = ref<ICategory | null>(null)
-const products = ref<IProduct[] | null>(null)
-const id = +route.params.id
+const route = useRoute();
+const category = ref<ICategory | null>(null);
+const products = ref<IProduct[] | null>(null);
+const id = +route.params.id;
 
 onMounted(async () => {
   await CategoryService.getCategoryById(id).then((response: AxiosResponse) => {
@@ -32,14 +32,14 @@ onMounted(async () => {
 
 <template>
   <v-container max-width="1120" v-if="category && products">
-    <h1 class="font-weight-medium my-5">{{ category.name }}</h1>
+    <h1 class="font-weight-medium my-5">{{ category?.name }}</h1>
     <v-row justify="center">
       <v-col
         cols="12" sm="6" md="4"
         v-for="product in products"
         :key="product.id"
       >
-        <product-card :product></product-card>
+        <product-card :product="product"></product-card>
       </v-col>
     </v-row>
   </v-container>

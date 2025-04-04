@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import type { IProduct } from "@/interfaces/product";
-import { useCartStore } from "@/store/cart.ts";
+import { useCartStore } from "@/store/cart";
 
-const props = defineProps({
-  item: {
-    type: Object as () => IProduct,
-    required: true
-  }
-});
+interface Props {
+  item: IProduct
+}
+
+const props = defineProps<Props>();
 
 const {
   addToCart,
