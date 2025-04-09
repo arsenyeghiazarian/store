@@ -2,15 +2,15 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-import CategoryService from "@/services/category.service"
-import ProductsService from "@/services/products.service"
-import { handleError } from "@/utils/errorHandler"
+import CategoryService from '@/services/category.service'
+import ProductsService from '@/services/products.service'
+import { handleError } from '@/utils/errorHandler'
 
-import type { ICategories, IProduct } from "@/interfaces/product"
-import type { ICategory } from "@/interfaces/category"
+import type { ICategories, IProduct } from '@/interfaces/product'
+import type { ICategory } from '@/interfaces/category'
 
-import ProductCard from "@/components/ProductCard.vue"
-import ProgressCircular from "@/components/ProgressCircular.vue"
+import ProductCard from '@/components/ProductCard.vue'
+import ProgressCircular from '@/components/ProgressCircular.vue'
 
 const route = useRoute()
 const category = ref<ICategory | null>(null)
@@ -36,7 +36,8 @@ const fetchData = async () => {
 
     const productsResponse = await ProductsService.getProducts()
     products.value = productsResponse.data.items.filter(
-      (p: IProduct) => p.categories && p.categories.some((c: ICategories) => c.id === categoryId.value)
+      (p: IProduct) =>
+        p.categories && p.categories.some((c: ICategories) => c.id === categoryId.value),
     )
   } catch (err) {
     handleError(err)
@@ -62,13 +63,7 @@ onMounted(fetchData)
       </div>
 
       <v-row v-else justify="center">
-        <v-col
-          v-for="product in products"
-          :key="product.id"
-          cols="12"
-          sm="6"
-          md="4"
-        >
+        <v-col v-for="product in products" :key="product.id" cols="12" sm="6" md="4">
           <product-card :product="product" />
         </v-col>
       </v-row>

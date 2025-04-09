@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-import ProductCard from "@/components/ProductCard.vue";
-import { useCartStore } from "@/store/cart";
+import ProductCard from '@/components/ProductCard.vue'
+import { useCartStore } from '@/store/cart'
 
-const cart = useCartStore();
-const isSubmitted = ref<boolean>(false);
+const cart = useCartStore()
+const isSubmitted = ref<boolean>(false)
 
 function handleSubmit() {
   cart.clearCart()
-  isSubmitted.value = true;
+  isSubmitted.value = true
 }
 </script>
 <template>
@@ -19,11 +19,7 @@ function handleSubmit() {
       <v-row>
         <v-col cols="12" sm="9" md="10">
           <v-row>
-            <v-col
-              cols="12" sm="6" md="3" lg="2"
-              v-for="product in cart.items"
-              :key="product.id"
-            >
+            <v-col cols="12" sm="6" md="3" lg="2" v-for="product in cart.items" :key="product.id">
               <product-card hasDeleteBtn :product></product-card>
             </v-col>
           </v-row>
@@ -35,9 +31,7 @@ function handleSubmit() {
               <p>€{{ cart.totalPrice }}</p>
             </v-card-text>
             <v-card-text>
-              <v-btn color="green" class="w-100" @click="handleSubmit">
-                Checkout
-              </v-btn>
+              <v-btn color="green" class="w-100" @click="handleSubmit"> Checkout </v-btn>
             </v-card-text>
           </v-card>
         </v-col>
@@ -47,9 +41,7 @@ function handleSubmit() {
   </v-container>
   <template v-else>
     <div class="d-flex justify-center align-center flex-column">
-      <h1 class="my-16">
-        Congratulations on your purchase!
-      </h1>
+      <h1 class="my-16">Congratulations on your purchase!</h1>
       <v-btn to="/">Go to Shopping</v-btn>
     </div>
   </template>

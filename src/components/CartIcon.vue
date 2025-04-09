@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
-import { useCartStore } from "@/store/cart";
+import { useCartStore } from '@/store/cart'
 
 const router = useRouter()
-const cart = useCartStore();
+const cart = useCartStore()
 
 function goToCart() {
   router.push('/cart')

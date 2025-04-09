@@ -17,13 +17,7 @@ import { globalError, isGlobalErrorVisible, clearError } from '@/utils/errorHand
     </div>
 
     <template v-slot:actions>
-      <v-btn
-        variant="text"
-        @click="clearError"
-        color="white"
-      >
-        Close
-      </v-btn>
+      <v-btn variant="text" @click="clearError" color="white"> Close </v-btn>
     </template>
   </v-snackbar>
 </template>

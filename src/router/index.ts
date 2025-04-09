@@ -10,8 +10,8 @@ const routes = [
     component: Home,
     meta: {
       title: 'Home',
-      keepAlive: true
-    }
+      keepAlive: true,
+    },
   },
   {
     path: '/category/:id',
@@ -19,8 +19,8 @@ const routes = [
     component: () => import('@/views/CategoryPage.vue'),
     meta: {
       title: 'Category',
-      keepAlive: true
-    }
+      keepAlive: true,
+    },
   },
   {
     path: '/product/:id',
@@ -28,8 +28,8 @@ const routes = [
     component: () => import('@/views/ProductDetails.vue'),
     meta: {
       title: 'Product Details',
-      keepAlive: false
-    }
+      keepAlive: false,
+    },
   },
   {
     path: '/cart',
@@ -37,8 +37,8 @@ const routes = [
     component: () => import('@/views/CartPage.vue'),
     meta: {
       title: 'Shopping Cart',
-      keepAlive: true
-    }
+      keepAlive: true,
+    },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -46,8 +46,8 @@ const routes = [
     component: () => import('@/views/PageNotFound.vue'),
     meta: {
       title: 'Page Not Found',
-      keepAlive: false
-    }
+      keepAlive: false,
+    },
   },
 ]
 
@@ -60,7 +60,7 @@ const router = createRouter({
     } else {
       return { top: 0 }
     }
-  }
+  },
 })
 
 // Update page title

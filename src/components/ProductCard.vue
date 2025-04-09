@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BuyBtn from "@/components/BuyBtn.vue";
-import type { IProduct } from "@/interfaces/product";
-import { useRouter } from "vue-router";
-import { ref } from "vue";
-import { useCartStore } from "@/store/cart";
+import BuyBtn from '@/components/BuyBtn.vue'
+import type { IProduct } from '@/interfaces/product'
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import { useCartStore } from '@/store/cart'
 
 interface Props {
   product: IProduct
@@ -11,17 +11,17 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  hasDeleteBtn: false
-});
+  hasDeleteBtn: false,
+})
 
-const {removeFromCart} = useCartStore();
-const router = useRouter();
-const showDialog = ref<boolean>(false);
+const { removeFromCart } = useCartStore()
+const router = useRouter()
+const showDialog = ref<boolean>(false)
 
 const handleItemRemove = () => {
   removeFromCart(props.product.id)
-  showDialog.value = false;
-};
+  showDialog.value = false
+}
 </script>
 <template>
   <v-card @click="router.push(`/product/${product.id}`)" hover>
@@ -43,23 +43,11 @@ const handleItemRemove = () => {
   </v-card>
   <v-dialog max-width="500" persistent v-model="showDialog">
     <v-card>
-      <v-card-text class="mt-7">
-        Are you sure you want to delete this Item?
-      </v-card-text>
+      <v-card-text class="mt-7"> Are you sure you want to delete this Item? </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn
-          text="Yes"
-          variant="flat"
-          color="green"
-          @click="handleItemRemove"
-        ></v-btn>
-        <v-btn
-          color="red"
-          variant="flat"
-          text="No"
-          @click="showDialog = false"
-        ></v-btn>
+        <v-btn text="Yes" variant="flat" color="green" @click="handleItemRemove"></v-btn>
+        <v-btn color="red" variant="flat" text="No" @click="showDialog = false"></v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

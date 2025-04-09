@@ -5,8 +5,8 @@ const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 })
 
 // Request interceptor
@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error)
-  }
+  },
 )
 
 // Response interceptor
@@ -28,7 +28,7 @@ axiosInstance.interceptors.response.use(
     // Handle errors globally
     handleError(error)
     return Promise.reject(error)
-  }
+  },
 )
 
 export default axiosInstance

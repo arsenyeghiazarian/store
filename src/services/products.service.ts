@@ -1,7 +1,7 @@
-import AxiosService from "@/services/axios.service";
-import type { AxiosResponse } from "axios";
-import type { IProduct } from "@/interfaces/product";
-import type { ICategoriesApi } from "@/interfaces/category";
+import AxiosService from '@/services/axios.service'
+import type { AxiosResponse } from 'axios'
+import type { IProduct } from '@/interfaces/product'
+import type { ICategoriesApi } from '@/interfaces/category'
 
 const ProductsService = {
   getProducts(): Promise<AxiosResponse<ICategoriesApi>> {
