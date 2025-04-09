@@ -1,4 +1,4 @@
-import AxiosService from "@/services/axios.service.ts";
+import AxiosService from "@/services/axios.service";
 import type { AxiosResponse } from "axios";
 import type { ICategory } from "@/interfaces/category";
 

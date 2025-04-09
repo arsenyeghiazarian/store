@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios'
 export const globalError = ref<string | null>(null)
 export const isGlobalErrorVisible = ref(false)
 
-export function handleError(error: unknown, context?: string): void {
+export function handleError(error: unknown): void {
   let errorMessage = 'An unexpected error occurred. Please try again later.'
 
   // Handle Axios errors

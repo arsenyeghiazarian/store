@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     // Handle errors globally
-    handleError(error, 'API Request')
+    handleError(error)
     return Promise.reject(error)
   }
 )
