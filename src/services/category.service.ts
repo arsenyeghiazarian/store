@@ -1,10 +1,12 @@
 import AxiosService from "@/services/axios.service.ts";
+import type { AxiosResponse } from "axios";
+import type { ICategory } from "@/interfaces/category";
 
 const CategoryService = {
-  getCategories() {
+  getCategories(): Promise<AxiosResponse<ICategory[]>> {
     return AxiosService.get('categories')
   },
-  getCategoryById(id: number) {
+  getCategoryById(id: number): Promise<AxiosResponse<ICategory>> {
     return AxiosService.get(`categories/${id}`)
   }
 }
