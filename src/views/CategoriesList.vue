@@ -24,14 +24,14 @@ function goToCategory(id: number) {
 const fetchData = async () => {
   try {
     isLoading.value = true
-    
+
     const [categoriesResponse, productsResponse] = await Promise.all([
       CategoryService.getCategories(),
       ProductsService.getProducts()
     ])
-    
-    categories.value = categoriesResponse.data
-    
+
+    categories.value = categoriesResponse.data.items
+
     products.value = productsResponse.data.items
   } catch (err) {
     handleError(err)

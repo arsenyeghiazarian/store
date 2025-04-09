@@ -1,8 +1,6 @@
-import type { IProduct } from '@/interfaces/product'
-
 export interface ICategoriesApi {
   count: number
-  items: IProduct[]
+  items: ICategory[]
   limit: number
   offset: number
   total: number

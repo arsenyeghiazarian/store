@@ -73,9 +73,19 @@ interface IGalleryImages {
   borderInfo: object
 }
 
+export interface IProductsApi {
+  count: number
+  items: IProduct[]
+  length: number
+  limit: number
+  offset: number
+  total: number
+}
+
 export interface ICategories {
   enabled: boolean
   id: number
   name: string
   nameTranslated: string
 }
+

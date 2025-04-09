@@ -1,10 +1,9 @@
 import AxiosService from '@/services/axios.service'
 import type { AxiosResponse } from 'axios'
-import type { IProduct } from '@/interfaces/product'
-import type { ICategoriesApi } from '@/interfaces/category'
+import type { IProduct, IProductsApi } from '@/interfaces/product'
 
 const ProductsService = {
-  getProducts(): Promise<AxiosResponse<ICategoriesApi>> {
+  getProducts(): Promise<AxiosResponse<IProductsApi>> {
     return AxiosService.get('products')
   },
   getProductDetails(id: number): Promise<AxiosResponse<IProduct>> {
