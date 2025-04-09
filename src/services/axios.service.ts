@@ -1,10 +1,9 @@
-import axios from "axios";
+import axiosInstance from '@/plugins/axios'
 
 const get = (url: string) => {
-  return axios({
+  return axiosInstance({
     method: 'get',
-    url: url + `?token=${import.meta.env.VITE_TOKEN}`,
-    baseURL: import.meta.env.VITE_BASE_URL
+    url: url + `?token=${import.meta.env.VITE_TOKEN}`
   });
 }
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import CartIcon from "@/components/CartIcon.vue";
-
+import GlobalError from "@/components/GlobalError.vue"
 </script>
 <template>
   <v-app>
@@ -23,5 +23,7 @@ import CartIcon from "@/components/CartIcon.vue";
         <span class="primary--text">&copy;Store {{ new Date().getFullYear() }}</span>
       </small>
     </v-footer>
+
+    <global-error />
   </v-app>
 </template>
