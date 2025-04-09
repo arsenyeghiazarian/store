@@ -20,7 +20,7 @@ function handleSubmit() {
         <v-col cols="12" sm="9" md="10">
           <v-row>
             <v-col cols="12" sm="6" md="3" lg="2" v-for="product in cart.items" :key="product.id">
-              <product-card hasDeleteBtn :product></product-card>
+              <product-card :product="product" :hasDeleteBtn="true" />
             </v-col>
           </v-row>
         </v-col>

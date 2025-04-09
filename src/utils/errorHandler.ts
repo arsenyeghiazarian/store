@@ -27,6 +27,9 @@ export function handleError(error: unknown): void {
       // Request was made but no response received
       errorMessage = 'Network error. Please check your connection.'
     }
+  } else if (error instanceof Error) {
+    // Handle standard JavaScript errors
+    errorMessage = error.message || errorMessage
   }
 
   globalError.value = errorMessage

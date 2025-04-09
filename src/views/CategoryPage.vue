@@ -56,7 +56,7 @@ onMounted(fetchData)
     </div>
 
     <template v-else-if="category && products">
-      <h1 class="font-weight-medium my-5">{{ category.name }}</h1>
+      <h1 class="font-weight-medium my-5">{{ category!.name }}</h1>
 
       <div v-if="products.length === 0" class="text-center my-8">
         <p class="text-h6">No products found in this category.</p>
