@@ -1,4 +1,4 @@
-/// <reference path="./src/types/eslint.d.ts" />
+import './src/types/eslint.d.ts'
 import pluginVue from 'eslint-plugin-vue'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'

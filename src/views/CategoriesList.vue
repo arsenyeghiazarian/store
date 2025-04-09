@@ -27,7 +27,7 @@ const fetchData = async () => {
 
     const [categoriesResponse, productsResponse] = await Promise.all([
       CategoryService.getCategories(),
-      ProductsService.getProducts()
+      ProductsService.getProducts(),
     ])
 
     categories.value = categoriesResponse.data.items

@@ -88,4 +88,3 @@ export interface ICategories {
   name: string
   nameTranslated: string
 }
-
