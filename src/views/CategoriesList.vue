@@ -3,16 +3,16 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import ProductsService from '@/services/products.service'
+import CategoryService from '@/services/category.service'
+import { handleError } from '@/utils/errorHandler'
 
-import type { AxiosResponse } from 'axios'
 import type { IProduct } from '@/interfaces/product'
+import type { ICategory } from '@/interfaces/category'
 
 import ProductCard from '@/components/ProductCard.vue'
 import ProgressCircular from '@/components/ProgressCircular.vue'
-import CategoryService from '@/services/category.service'
-import type { ICategory } from '@/interfaces/category'
 
-const isLoading = ref<boolean>(false)
+const isLoading = ref<boolean>(true)
 const categories = ref<ICategory[]>([])
 const products = ref<IProduct[]>([])
 const router = useRouter()
@@ -21,17 +21,26 @@ function goToCategory(id: number) {
   router.push(`/category/${id}`)
 }
 
-onMounted(async () => {
-  isLoading.value = true
-  await CategoryService.getCategories().then((response: AxiosResponse) => {
-    categories.value = response.data.items
-  })
+const fetchData = async () => {
+  try {
+    isLoading.value = true
+    
+    const [categoriesResponse, productsResponse] = await Promise.all([
+      CategoryService.getCategories(),
+      ProductsService.getProducts()
+    ])
+    
+    categories.value = categoriesResponse.data
+    
+    products.value = productsResponse.data.items
+  } catch (err) {
+    handleError(err)
+  } finally {
+    isLoading.value = false
+  }
+}
 
-  await ProductsService.getProducts().then((response: AxiosResponse) => {
-    products.value = response.data.items
-  })
-  isLoading.value = false
-})
+onMounted(fetchData)
 </script>
 <template>
   <v-container max-width="1120">
@@ -53,12 +62,12 @@ onMounted(async () => {
       <h2 class="text-center font-weight-medium my-5">Products</h2>
       <v-row justify="center">
         <v-col cols="12" sm="6" md="4" v-for="product in products" :key="product.id">
-          <product-card :product></product-card>
+          <product-card :product="product" />
         </v-col>
       </v-row>
     </template>
     <div v-else class="d-flex justify-center mt-16">
-      <progress-circular></progress-circular>
+      <progress-circular />
     </div>
   </v-container>
 </template>
