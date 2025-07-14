@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import CartIcon from '@/components/CartIcon.vue'
-import GlobalError from '@/components/GlobalError.vue'
+  import { RouterView } from 'vue-router';
+  import CartIcon from '@/components/CartIcon.vue';
+  import GlobalError from '@/components/GlobalError.vue';
 </script>
 <template>
   <v-app>

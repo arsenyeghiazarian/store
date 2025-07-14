@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { globalError, isGlobalErrorVisible, clearError } from '@/utils/errorHandler'
+  import { globalError, isGlobalErrorVisible, clearError } from '@/utils/errorHandler';
 </script>
 
 <template>
@@ -16,8 +16,8 @@ import { globalError, isGlobalErrorVisible, clearError } from '@/utils/errorHand
       <span>{{ globalError }}</span>
     </div>
 
-    <template v-slot:actions>
-      <v-btn variant="text" @click="clearError" color="white"> Close </v-btn>
+    <template #actions>
+      <v-btn variant="text" color="white" @click="clearError"> Close </v-btn>
     </template>
   </v-snackbar>
 </template>

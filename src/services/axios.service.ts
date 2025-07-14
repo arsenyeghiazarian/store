@@ -1,14 +1,9 @@
-import axiosInstance from '@/plugins/axios'
+import axiosInstance from '@/plugins/axios';
 
 const get = (url: string) => {
-  return axiosInstance({
-    method: 'get',
-    url: url + `?token=${import.meta.env.VITE_TOKEN}`,
-  })
-}
+  return axiosInstance({ method: 'get', url: url + `?token=${import.meta.env.VITE_TOKEN}` });
+};
 
-const AxiosService = {
-  get,
-}
+const AxiosService = { get };
 
-export default AxiosService
+export default AxiosService;

@@ -4,8 +4,8 @@
   </div>
 </template>
 <style scoped>
-.progress-bar {
-  width: 66px;
-  height: 66px;
-}
+  .progress-bar {
+    width: 66px;
+    height: 66px;
+  }
 </style>

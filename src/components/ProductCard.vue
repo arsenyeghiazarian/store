@@ -1,30 +1,28 @@
 <script setup lang="ts">
-import BuyBtn from '@/components/BuyBtn.vue'
-import type { IProduct } from '@/interfaces/product'
-import { useRouter } from 'vue-router'
-import { ref } from 'vue'
-import { useCartStore } from '@/store/cart'
+  import BuyBtn from '@/components/BuyBtn.vue';
+  import type { IProduct } from '@/interfaces/product';
+  import { useRouter } from 'vue-router';
+  import { ref } from 'vue';
+  import { useCartStore } from '@/store/cart';
 
-interface Props {
-  product: IProduct
-  hasDeleteBtn?: boolean
-}
+  interface Props {
+    product: IProduct;
+    hasDeleteBtn?: boolean;
+  }
 
-const props = withDefaults(defineProps<Props>(), {
-  hasDeleteBtn: false,
-})
+  const props = withDefaults(defineProps<Props>(), { hasDeleteBtn: false });
 
-const { removeFromCart } = useCartStore()
-const router = useRouter()
-const showDialog = ref<boolean>(false)
+  const { removeFromCart } = useCartStore();
+  const router = useRouter();
+  const showDialog = ref<boolean>(false);
 
-const handleItemRemove = () => {
-  removeFromCart(props.product.id)
-  showDialog.value = false
-}
+  const handleItemRemove = () => {
+    removeFromCart(props.product.id);
+    showDialog.value = false;
+  };
 </script>
 <template>
-  <v-card @click="router.push(`/product/${product.id}`)" hover>
+  <v-card hover @click="router.push(`/product/${product.id}`)">
     <v-img :src="product.imageUrl">
       <v-card-title>{{ product.name }}</v-card-title>
     </v-img>
@@ -33,15 +31,15 @@ const handleItemRemove = () => {
       <v-spacer></v-spacer>
       <buy-btn :item="product"></buy-btn>
       <v-btn
+        v-if="hasDeleteBtn"
         density="compact"
         size="small"
-        @click.stop="showDialog = true"
-        v-if="hasDeleteBtn"
         icon="mdi-delete"
+        @click.stop="showDialog = true"
       ></v-btn>
     </v-card-actions>
   </v-card>
-  <v-dialog max-width="500" persistent v-model="showDialog">
+  <v-dialog v-model="showDialog" max-width="500" persistent>
     <v-card>
       <v-card-text class="mt-7"> Are you sure you want to delete this Item? </v-card-text>
       <v-card-actions>
