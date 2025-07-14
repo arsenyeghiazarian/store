@@ -7,7 +7,7 @@ export const useCartStore = defineStore(
   () => {
     const items = ref<IProduct[]>([]);
 
-    const totalItems = computed(() => items.value.length);
+    const totalItems = computed<number>(() => items.value.length);
 
     const totalPrice = computed(() =>
       items.value

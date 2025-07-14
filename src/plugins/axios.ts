@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { handleError } from '@/utils/errorHandler';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -7,7 +6,6 @@ const axiosInstance = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Request interceptor
 axiosInstance.interceptors.request.use(
   config => {
     return config;
@@ -17,14 +15,11 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Response interceptor
 axiosInstance.interceptors.response.use(
   response => {
     return response;
   },
   error => {
-    // Handle errors globally
-    handleError(error);
     return Promise.reject(error);
   }
 );
