@@ -32,8 +32,8 @@ A modern frontend project built with Vue 3, Vite, and TypeScript. This project w
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/test-work.git
-cd test-work
+git clone git@github.com:arsenyeghiazarian/store.git
+cd store
 ```
 
 ### 2. Install dependencies
@@ -54,12 +54,13 @@ The app should now be running at: [http://localhost:3000](http://localhost:3000)
 
 ## Available Scripts
 
-| Command              | Description                                  |
-|----------------------|----------------------------------------------|
-| `npm run dev`        | Start local development server               |
-| `npm run build`      | Build the app for production                 |
-| `npm run lint`       | Run ESLint to check and fix code style       |
-| `npm run type-check` | Run type checking using `vue-tsc`            |
+| Command              | Description                               |
+|----------------------|-------------------------------------------|
+| `npm run dev`        | Start local development server            |
+| `npm run build`      | Build the app for production              |
+| `npm run lint`       | Run ESLint to check and fix code style    |
+| `npm run type-check` | Run type checking using `vue-tsc`         |
+| `npm run format`     | Format the code based on .prettierrc.josn |
 
 ---
 

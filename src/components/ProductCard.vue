@@ -10,14 +10,14 @@
     hasDeleteBtn?: boolean;
   }
 
-  const props = withDefaults(defineProps<Props>(), { hasDeleteBtn: false });
+  const { product, hasDeleteBtn = false } = defineProps<Props>();
 
   const { removeFromCart } = useCartStore();
   const router = useRouter();
   const showDialog = ref<boolean>(false);
 
   const handleItemRemove = () => {
-    removeFromCart(props.product.id);
+    removeFromCart(product.id);
     showDialog.value = false;
   };
 </script>
